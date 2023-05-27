@@ -79,7 +79,7 @@ export default function Contact(){
                 <form className="row g-1" onSubmit={handleSubmit(onSubmit)} >
                     <div className="row">
                         <div className="col-md-6 text-white anima">
-                            <label for="inputZip" className="form-label">Nome   </label>
+                            <label htmlFor="inputZip" className="form-label">Nome   </label>
                             <input type="text" className="form-control anima" id="inputZip"
                              {...register("camponome", { required: true })} />
                              {/* errors will return when field validation fails  */}
@@ -89,7 +89,7 @@ export default function Contact(){
                     
                     <div className="row">
                         <div className="col-md-6 text-white animas">
-                            <label for="inputZip" className="form-label">Email</label>
+                            <label htmlFor="inputZip" className="form-label">Email</label>
                             <input type="email" placeholder='Put your email' className="form-control anima2" id="inputZip"
                             {...register("campoemail", { required: true })} />
                             {errors.campoemail && <span className='text-warning'>É necessário preencher o campo email</span>}
@@ -98,7 +98,7 @@ export default function Contact(){
 
                     <div className="row">
                         <div className="col-md-6 text-white animas">
-                            <label for="inputZip" className="form-label">Assunto</label>
+                            <label htmlFor="inputZip" className="form-label">Assunto</label>
                             <input type="text" placeholder='Assunto' className="form-control anima2" id="inputZip"
                             {...register("campoassunto", { required: true, maxLength: 20 })} />
                             {errors.campoassunto && <span className='text-warning'>É necessário preencher o campo assunto</span>}
@@ -107,7 +107,7 @@ export default function Contact(){
 
                     <div className="row mt-3">
                         <div className="col-md-6 text-white animas">
-                            <label for="floatingTextarea">Comments</label>
+                            <label htmlFor="floatingTextarea">Comments</label>
                             <textarea className="form-control anima2" placeholder="Leave a comment here" id="floatingTextarea"
                              {...register("campotexto", { required: true })} ></textarea>
                              {errors.campotexto && <span className='text-warning'>É necessário preencher o campo texto</span>}

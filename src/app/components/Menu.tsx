@@ -1,9 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 export default function Menu(){
+    type Inputs = {
+        tabIndex: number,
+      };
     return(
         <>
-        <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div className="offcanvas offcanvas-end" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div className="offcanvas-header">
             <p className="offcanvas-title text-white fs-1" id="offcanvasExampleLabel">Menu</p>
             <svg xmlns="http://www.w3.org/2000/svg" data-bs-dismiss="offcanvas" aria-label="Close"
@@ -12,7 +15,7 @@ export default function Menu(){
         </div>
         <div className="offcanvas-body">
             <div>
-            <ul class="list-unstyled menu-lista">
+            <ul className="list-unstyled menu-lista">
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about'>About</Link></li>
                 <li><Link href='/link'>Work</Link></li>

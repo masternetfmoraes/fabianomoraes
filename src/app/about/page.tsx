@@ -58,7 +58,7 @@ export default async function Index(){
             <p className='text-white display-6'>Apaixonado por programação, atuando desde 2001</p>
             <div className="anima">
             <p className='text-white fs-6 animas'>
-            "Com uma trajetória sólida de mais de 20 anos como desenvolvedor web, sou especializado tanto no front-end quanto no back-end, além de possuir habilidades em design de sistemas. Desde 2001, tenho colaborado em diversos projetos, criando interfaces atraentes e intuitivas utilizando tecnologias como HTML, CSS, JavaScript e PHP. Minha experiência em programação e meu olhar estético me permitem desenvolver soluções web funcionais e visualmente agradáveis. Também tenho uma visão abrangente do desenvolvimento de sistemas, o que me permite criar arquiteturas eficientes e escaláveis. Sempre em busca de atualização, estou comprometido em fornecer produtos web de qualidade e soluções eficazes para os desafios tecnológicos."
+            &quot;Com uma trajetória sólida de mais de 20 anos como desenvolvedor web, sou especializado tanto no front-end quanto no back-end, além de possuir habilidades em design de sistemas. Desde 2001, tenho colaborado em diversos projetos, criando interfaces atraentes e intuitivas utilizando tecnologias como HTML, CSS, JavaScript e PHP. Minha experiência em programação e meu olhar estético me permitem desenvolver soluções web funcionais e visualmente agradáveis. Também tenho uma visão abrangente do desenvolvimento de sistemas, o que me permite criar arquiteturas eficientes e escaláveis. Sempre em busca de atualização, estou comprometido em fornecer produtos web de qualidade e soluções eficazes para os desafios tecnológicos.&quot;
             </p>
             </div>
             
