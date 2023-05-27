@@ -21,6 +21,7 @@ export default function Skeleton(){
             <div  className="title"></div>
             <div  className="title"></div>
             <div  className="title"></div>
+            <div  className="title"></div>
             </div>
         </div>
         </div>
