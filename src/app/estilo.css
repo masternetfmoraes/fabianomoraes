@@ -1,0 +1,248 @@
+.background{
+    /*background-color: #1F1F21;*/
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(172deg, rgba(31,31,33,1) 50%, rgba(58, 56, 56, 1) 100%);
+    overflow-y: auto;
+}
+.background::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    content: " ";
+    background-image: url("https://www.claassenstoffen.nl/wp-content/uploads/Korfuzwart.jpg");
+    object-fit: cover;
+    filter: opacity(0.198);
+    /*
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    */
+}
+.background-card{
+    /*background-color: #1F1F21;*/
+    background: linear-gradient(172deg, rgba(31,31,33,1) 50%, rgba(58, 56, 56, 0.8) 100%);
+    height: 100%;
+    width: 100%;
+}
+.background-card::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    background-image: url("https://www.claassenstoffen.nl/wp-content/uploads/Korfuzwart.jpg");
+    object-fit: cover;
+    filter: opacity(0.198);
+    /*
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    */
+    border-bottom-right-radius: 40px;
+}
+.camada{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.imagem{
+    width: 70%;
+    height: auto;
+    border-radius: 35px;
+    object-fit: cover;
+}
+.borda{
+    width: 100%;
+    border: 1px solid rgba( 255, 255, 255, 1);
+}
+.icone{
+    height: auto;
+    fill: white;
+    transition: fill 2s; /* Transição de cor com 2 segundos de duração */
+}
+.icone-menu{
+    height: auto;
+    fill: white;
+    position: fixed;
+    top: 45px;
+    right: 80px;
+    cursor: pointer;
+    background-color: rgba(31,31,33,0.5);
+    width: 60px;
+    height: 60px;
+    padding: 7px;
+}
+.icone-card{
+    height: auto;
+    fill: #E4A11B;
+}
+
+.bordavertical{
+    border-left: 2px solid rgba( 255, 255, 255, 0.4);
+    margin-top: 50px;
+    height: 100vh;
+}
+.flutua{
+    position: relative;
+    top: 25px
+}
+.yellow{
+    color: #E4A11B;
+}
+.linque .icone{
+    transition: fill 0.5s ;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+}
+.linque .icone:hover{
+    fill: yellow !important;
+    text-shadow:  -3px -4px 30px 3px rgba(0,0,0,0.75);
+    border: 1px solid  yellow;
+}
+
+.close-menu{
+    fill: white;
+    cursor: pointer;
+    z-index: 3;
+}
+.btn:hover{
+    background-color: rgba( 255, 255, 255, 0.2) !important;
+    color: #E4A11B !important;
+}
+
+.offcanvas{
+    background-color: rgba(31,31,33,1) !important;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 150px;
+    box-shadow: 0px -4px 15px 0px rgba(0,0,0,0.75);
+    transition: right 2s, left 2s;
+
+}
+.offcanvas::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    background-image: url("https://www.claassenstoffen.nl/wp-content/uploads/Korfuzwart.jpg");
+    object-fit: cover;
+    filter: opacity(0.198);
+}
+.menu-lista{
+    font-size: 25px;
+    font-weight: 100;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+.menu-lista li{
+    padding-top: 25px;
+    border-bottom: 1px solid rgba( 255, 255, 255, 0.1);
+}
+a{
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.loading{
+    color: red;
+}
+.anima{
+    top: 450px;
+    animation-name: anima-card !important;
+    animation-delay: 0.35s;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
+}
+.anima2{
+    top: 450px;
+    animation-name: anima-card !important;
+    animation-delay: 0.45s;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
+
+}
+.animas{
+    top: 0;
+    position: relative;
+    animation-name: anima-card !important;
+    animation-delay: 0.35s;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
+}
+.fadeentra{
+    /**/
+    opacity: 0;
+    animation-name: fadeentra !important;
+    animation-delay: 0.05s;
+    animation-duration: 0.35s;
+    animation-fill-mode: forwards;
+}
+
+.card {
+    border-bottom-right-radius: 40px !important;
+    box-shadow: 0px 0px 5px 3px #1F1F21;
+}
+
+.techs{
+    height: auto;
+    fill: rgba( 255, 255, 255, 0.5);    
+}
+@keyframes fadeentra{
+    0%{
+        opacity: 0;
+        transform: scale(0.5);
+        filter: blur(18px);
+    }25%{
+        opacity: 0.5;
+        transform: scale(1.1);
+        filter: blur(25px);
+    }100%{
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+@keyframes anima-card {
+    from{
+        top:450px;
+        filter: blur(15px);
+    }
+    to{
+        top: 0px;
+        filter: blur(0);
+    }
+}
+
+@media screen and (max-width: 584px) {
+    body{
+        overflow: visible !important;
+    }
+    .background{
+      height: 100%;
+    }
+    .icone-menu{
+        height: auto !important;
+        fill: white;
+        position: fixed;
+        right: 20px;
+        top: 20px
+    }
+  }
+
+
+
+  
