@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 //const config = require('../../../config.local')
-export default function sendEmail(req, res){
+export default function sendEmail(req: any, res: any){
     let transporter = nodemailer.createTransport({
       service: 'hotmail',
       auth: {
@@ -17,7 +17,7 @@ export default function sendEmail(req, res){
       <b>Teste de Email<b><hr /> <h1>Teste</h1><br /><h6>Teste de h6</h6>
       `, // html body
     };
-    transporter.sendMail(mailOptions, function (error, info) {
+    transporter.sendMail(mailOptions, function (error: any, info: { response: string; }) {
       if (error) {
         console.log(error);
       } else {
