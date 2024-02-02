@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 //
 import { useForm, SubmitHandler } from "react-hook-form";
+
 //
 import Head from '../head'
 import '../estilo.css'
@@ -16,10 +17,34 @@ type Inputs = {
     campoassunto: string,
     campotexto: string,
   };
-
 export default function Contact(){
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+    
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        try {
+          const response = await fetch('/api/user', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              nome: data.camponome,
+              email: data.campoemail,
+              assunto: data.campoassunto,
+              texto: data.campotexto,
+            }),
+          });
+      
+          if (response.ok) {
+            const responseData = await response.json();
+            alert(JSON.stringify(responseData));
+          } else {
+            throw new Error('Erro na requisição');
+          }
+        } catch (error:any) {
+          alert('Erro total: ' + error.message);
+        }
+      };
     return(
         <div>
         <Head titulo="Contato Fabiano Moraes website" />
@@ -76,11 +101,11 @@ export default function Contact(){
                 <p className='text-white display-1'><strong>Entre em <span className='yellow'>Contato</span></strong></p>
                 <hr className="borda" />
                 <p className='text-white fs-3'>Entrar em contato</p>
-                <form className="row g-1" onSubmit={handleSubmit(onSubmit)} >
+                <form className="row g-1" onSubmit={handleSubmit(onSubmit)} method='POST' >
                     <div className="row">
                         <div className="col-md-6 text-white anima">
-                            <label htmlFor="inputZip" className="form-label">Nome   </label>
-                            <input type="text" className="form-control anima" id="inputZip"
+                            <label htmlFor="camponome" className="form-label">Nome   </label>
+                            <input type="text" id="camponome" className="form-control anima" id="inputZip"
                              {...register("camponome", { required: true })} />
                              {/* errors will return when field validation fails  */}
                             {errors.camponome && <span className='text-warning'>É necessário preencher o campo nome</span>}
@@ -89,8 +114,8 @@ export default function Contact(){
                     
                     <div className="row">
                         <div className="col-md-6 text-white animas">
-                            <label htmlFor="inputZip" className="form-label">Email</label>
-                            <input type="email" placeholder='Put your email' className="form-control anima2" id="inputZip"
+                            <label htmlFor="campoemail" className="form-label">Email</label>
+                            <input type="email" id="campoemail" placeholder='Put your email' className="form-control anima2" id="inputZip"
                             {...register("campoemail", { required: true })} />
                             {errors.campoemail && <span className='text-warning'>É necessário preencher o campo email</span>}
                         </div>
@@ -107,8 +132,8 @@ export default function Contact(){
 
                     <div className="row mt-3">
                         <div className="col-md-6 text-white animas">
-                            <label htmlFor="floatingTextarea">Comments</label>
-                            <textarea className="form-control anima2" placeholder="Leave a comment here" id="floatingTextarea"
+                            <label htmlFor="campotexto">Comments</label>
+                            <textarea id="campotexto" className="form-control anima2" placeholder="Leave a comment here" id="floatingTextarea"
                              {...register("campotexto", { required: true })} ></textarea>
                              {errors.campotexto && <span className='text-warning'>É necessário preencher o campo texto</span>}
                         </div>
