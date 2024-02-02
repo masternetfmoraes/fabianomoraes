@@ -22,7 +22,7 @@ export default function Contact(){
     
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         try {
-          const response = await fetch('/api/user', {
+          const response = await fetch('https://dummyjson.com/products/1', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export default function Contact(){
             throw new Error('Erro na requisição');
           }
         } catch (error:any) {
-          alert('Erro total: ' + error.message);
+          alert('Erro total: \n' + error.message);
         }
       };
     return(
@@ -105,7 +105,7 @@ export default function Contact(){
                     <div className="row">
                         <div className="col-md-6 text-white anima">
                             <label htmlFor="camponome" className="form-label">Nome   </label>
-                            <input type="text" id="camponome" className="form-control anima" id="inputZip"
+                            <input type="text" id="camponome" className="form-control anima"
                              {...register("camponome", { required: true })} />
                              {/* errors will return when field validation fails  */}
                             {errors.camponome && <span className='text-warning'>É necessário preencher o campo nome</span>}
@@ -115,7 +115,7 @@ export default function Contact(){
                     <div className="row">
                         <div className="col-md-6 text-white animas">
                             <label htmlFor="campoemail" className="form-label">Email</label>
-                            <input type="email" id="campoemail" placeholder='Put your email' className="form-control anima2" id="inputZip"
+                            <input type="email" id="campoemail" placeholder='Put your email' className="form-control anima2"
                             {...register("campoemail", { required: true })} />
                             {errors.campoemail && <span className='text-warning'>É necessário preencher o campo email</span>}
                         </div>
@@ -124,7 +124,7 @@ export default function Contact(){
                     <div className="row">
                         <div className="col-md-6 text-white animas">
                             <label htmlFor="inputZip" className="form-label">Assunto</label>
-                            <input type="text" placeholder='Assunto' className="form-control anima2" id="inputZip"
+                            <input type="text" placeholder='Assunto' className="form-control anima2"
                             {...register("campoassunto", { required: true, maxLength: 20 })} />
                             {errors.campoassunto && <span className='text-warning'>É necessário preencher o campo assunto</span>}
                         </div>
@@ -133,7 +133,7 @@ export default function Contact(){
                     <div className="row mt-3">
                         <div className="col-md-6 text-white animas">
                             <label htmlFor="campotexto">Comments</label>
-                            <textarea id="campotexto" className="form-control anima2" placeholder="Leave a comment here" id="floatingTextarea"
+                            <textarea id="campotexto" className="form-control anima2" placeholder="Leave a comment here"
                              {...register("campotexto", { required: true })} ></textarea>
                              {errors.campotexto && <span className='text-warning'>É necessário preencher o campo texto</span>}
                         </div>

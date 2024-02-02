@@ -1,11 +1,9 @@
-const handler = (req, res) => {
-  const data = {
-    nome: 'John Doe',
-    idade: 30,
-    cidade: 'Exemplo City'
-  };
-
-  return JSON.stringify(data)
+const user = {
+  nome: 'John Doe',
+  idade: 30,
+  cidade: 'Exemplo City'
 };
 
-export default handler;
+export default function User() {
+  return <pre>{JSON.stringify(user, null, 2)}</pre>;
+}
