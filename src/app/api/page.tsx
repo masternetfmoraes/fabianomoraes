@@ -5,7 +5,7 @@ export default function sendEmail(req: any, res: any){
       service: 'hotmail',
       auth: {
         user: 'moraes_18@hotmail.com',
-        pass: '*f3d3r1c03*',
+        pass: 'senha',
       },
     })
     const mailOptions = {
