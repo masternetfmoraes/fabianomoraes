@@ -19,7 +19,26 @@ type Inputs = {
   };
 export default function Contact(){
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-    
+    const enviaEmail=(data: any,e: any)=>{
+        e.preventDefault();
+        
+        fetch('/api',{
+            method:'POST',
+            headers: {
+                'Content-Type':'applcation/json'
+            },
+            body: JSON.stringify({
+                nome: data.camponome,
+                email: data.campoemail
+            })
+
+        }).then(response =>response.json())
+        .then(datas=>{
+            alert('certo')
+        }).catch((error)=>{
+            alert(error.message)
+        })
+    }
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
 
         try {
@@ -103,7 +122,7 @@ export default function Contact(){
                 <p className='text-white display-1'><strong>Entre em <span className='yellow'>Contato</span></strong></p>
                 <hr className="borda" />
                 <p className='text-white fs-3'>Entrar em contato</p>
-                <form className="row g-1" onSubmit={handleSubmit(onSubmit)} method='POST' >
+                <form className="row g-1" onSubmit={handleSubmit(enviaEmail)} method='POST' >
                     <div className="row">
                         <div className="col-md-6 text-white anima">
                             <label htmlFor="camponome" className="form-label">Nome   </label>
