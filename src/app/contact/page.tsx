@@ -21,11 +21,13 @@ export default function Contact(){
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
     
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
+
         try {
-          const response = await fetch('https://dummyjson.com/products/1', {
+          const response = await fetch('/api', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
               nome: data.camponome,
@@ -34,10 +36,10 @@ export default function Contact(){
               texto: data.campotexto,
             }),
           });
-      
+
           if (response.ok) {
             const responseData = await response.json();
-            alert(JSON.stringify(responseData));
+            alert(JSON.stringify(data));
           } else {
             throw new Error('Erro na requisição');
           }
