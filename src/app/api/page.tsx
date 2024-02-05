@@ -1,34 +1,31 @@
 import nodemailer from 'nodemailer';
 
-export default async function handler(req :any, res:any ) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método não permitido' });
-  }
-
-  const transporter = nodemailer.createTransport({
-    // Configurações do seu serviço de e-mail (por exemplo, Gmail)
-    service: 'seu-servico-de-email',
-    auth: {
-      user: 'seu-email@gmail.com',
-      pass: 'sua-senha-do-email',
-    },
-  });
-
-  const mailOptions = {
-    from: 'seu-email@gmail.com',
-    to: 'destinatario@gmail.com',
-    subject: 'Assunto do e-mail',
-    text: 'Texto do e-mail',
-    html: `<b>Hello world?</b>
-           <b>Teste de Email<b><hr /> <h1>Teste</h1><br /><h6>Teste de h6</h6>
-           ${JSON.stringify(req.body.nome)}
-          `,
-  };
-
+export default async function sendEmail(data: any, response: any) {
   try {
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ success: true, message: 'E-mail enviado com sucesso!' });
+    let transporter = nodemailer.createTransport({
+      service: 'hotmail',
+      auth: {
+        user: 'webdev2024@hotmail.com',
+        pass: 'senha123',
+      },
+    });
+
+    const mailOptions = {
+      from: 'Contato do Site <webdev2024@hotmail.com>',
+      to: 'webdev2024@hotmail.com',
+      subject: 'Assunto do e-mail',
+      text: 'Tesxto do email',
+      html: `<b>Hello world?</b>
+      <b>Teste de Email<b><hr /> <h1>Teste</h1><br /><h6>Teste de h6</h6>
+      ${JSON.stringify(data)}
+      `,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log('E-mail enviado: ' + info.response);
+    //response.status(200).json({ message: 'E-mail enviado com sucesso!' });
   } catch (error) {
-    res.status(500).json({ error:' error.message' });
+    console.error(error);
+    //response.status(500).json({ error: 'Erro ao enviar o e-mail' });
   }
 }

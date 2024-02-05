@@ -19,26 +19,33 @@ type Inputs = {
   };
 export default function Contact(){
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-    const enviaEmail=(data: any,e: any)=>{
-        e.preventDefault();
-        
-        fetch('/api',{
-            method:'POST',
-            headers: {
-                'Content-Type':'applcation/json'
-            },
-            body: JSON.stringify({
-                nome: data.camponome,
-                email: data.campoemail
-            })
 
-        }).then(response =>response.json())
-        .then(datas=>{
-            alert('certo')
-        }).catch((error)=>{
-            alert(error.message)
-        })
+    
+    async function enviaEmail(data: any,e: any){
+        e.preventDefault();
+        try {
+  
+            const response = await fetch('/api', {
+                method: 'post',
+                headers :{
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                console.log("falling over")
+                throw new Error(`response status: ${response.status}`);
+            }
+            const responseData = await response.json();
+            console.log(responseData['message'])
+    
+            alert('Message successfully sent');
+        } catch (err) {
+            console.error(err);
+            alert("Houve um erro , por favor tente reenviar o formulário"+err.message);
+        }
     }
+    /*
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
 
         try {
@@ -66,6 +73,7 @@ export default function Contact(){
           alert('Erro total: \n' + error.message);
         }
       };
+      */
     return(
         <div>
         <Head titulo="Contato Fabiano Moraes website" />
@@ -122,7 +130,7 @@ export default function Contact(){
                 <p className='text-white display-1'><strong>Entre em <span className='yellow'>Contato</span></strong></p>
                 <hr className="borda" />
                 <p className='text-white fs-3'>Entrar em contato</p>
-                <form className="row g-1" onSubmit={handleSubmit(enviaEmail)} method='POST' >
+                <form className="row g-1" onSubmit={handleSubmit(enviaEmail)} method='post' >
                     <div className="row">
                         <div className="col-md-6 text-white anima">
                             <label htmlFor="camponome" className="form-label">Nome   </label>
