@@ -12,8 +12,8 @@ import Menu from '../components/Menu'
 //tipos
 
 type Inputs = {
-    camponome: string,
-    campoemail: string,
+    name: string,
+    email: string,
     campoassunto: string,
     campotexto: string,
   };
@@ -21,16 +21,22 @@ export default function Contact(){
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
 
     
-    async function enviaEmail(data: any,e: any){
+    async function POST(data: any,e: any){
         e.preventDefault();
         try {
   
             const response = await fetch('/api', {
-                method: 'post',
-                headers :{
-                    "Content-Type": "application/json",
+                method: 'POST',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email
+                }),
             });
             if (!response.ok) {
                 console.log("falling over")
@@ -40,9 +46,9 @@ export default function Contact(){
             console.log(responseData['message'])
     
             alert('Message successfully sent');
-        } catch (err) {
+        } catch (err:any) {
             console.error(err);
-            alert("Houve um erro , por favor tente reenviar o formulário"+err.message);
+            alert("Houve um erro , por favor tente reenviar o formulário!!\n"+err.message);
         }
     }
     /*
@@ -130,12 +136,12 @@ export default function Contact(){
                 <p className='text-white display-1'><strong>Entre em <span className='yellow'>Contato</span></strong></p>
                 <hr className="borda" />
                 <p className='text-white fs-3'>Entrar em contato</p>
-                <form className="row g-1" onSubmit={handleSubmit(enviaEmail)} method='post' >
+                <form className="row g-1" onSubmit={handleSubmit(POST)} method='post' >
                     <div className="row">
                         <div className="col-md-6 text-white anima">
-                            <label htmlFor="camponome" className="form-label">Nome   </label>
-                            <input type="text" id="camponome" className="form-control anima"
-                             {...register("camponome", { required: true })} />
+                            <label htmlFor="name" className="form-label">Nome   </label>
+                            <input type="text" id="name" className="form-control anima"
+                             {...register("name", { required: true })} />
                              {/* errors will return when field validation fails  */}
                             {errors.camponome && <span className='text-warning'>É necessário preencher o campo nome</span>}
                         </div>
@@ -143,9 +149,9 @@ export default function Contact(){
                     
                     <div className="row">
                         <div className="col-md-6 text-white animas">
-                            <label htmlFor="campoemail" className="form-label">Email</label>
-                            <input type="email" id="campoemail" placeholder='Put your email' className="form-control anima2"
-                            {...register("campoemail", { required: true })} />
+                            <label htmlFor="email" className="form-label">Email</label>
+                            <input type="email" id="email" placeholder='Put your email' className="form-control anima2"
+                            {...register("email", { required: true })} />
                             {errors.campoemail && <span className='text-warning'>É necessário preencher o campo email</span>}
                         </div>
                     </div>
