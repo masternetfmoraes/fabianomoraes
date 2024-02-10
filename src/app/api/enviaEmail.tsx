@@ -40,9 +40,9 @@ export default async function POST(request: Request) {
     // Enviar o email
     await transporter.sendMail(mailOptions);
 
-    return Response.json({ name, email, assunto });
+    //return Response.json({ name, email, assunto });
   } catch (error) {
     console.error(error);
-    return Response.json({ error: 'Ocorreu um erro ao processar a solicitação' }, { status: 500 });
+    //return Response.json({ error: 'Ocorreu um erro ao processar a solicitação' }, { status: 500 });
   }
 }
