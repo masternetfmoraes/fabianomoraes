@@ -18,7 +18,7 @@ export default function Menu(){
             <ul className="list-unstyled menu-lista">
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about'>About</Link></li>
-                <li><Link href='/link'>Work</Link></li>
+                <li><Link href='/work'>Work</Link></li>
                 <li><Link href='/contact'>Contact</Link></li>
             </ul>
             </div>

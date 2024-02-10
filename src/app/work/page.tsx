@@ -19,29 +19,12 @@ type Inputs = {
     assunto: string,
     texto: string,
   };
-export default function Contact(){
-    const { register, handleSubmit, watch, formState: { errors },reset } = useForm<Inputs>();
-
+export default function Work(){
     
-    async function POST(data: any,e: any){
-        e.preventDefault();
-        const formData = new FormData(e.target)
-        try {
-  
-            const response = enviaEmail(
-                data
-              );
-            alert('Message successfully sent');
-            reset()
-        } catch (err:any) {
-            console.error(err);
-            alert("Houve um erro , por favor tente reenviar o formulário!!\n"+err.message);
-        }
-    }
     
     return(
         <div>
-        <Head titulo="Contato Fabiano Moraes website" />
+        <Head titulo="Work Fabiano Moraes website" />
         <section id="topo">
         <div className='container-fluid background py-1'>
         <Menu />
@@ -91,53 +74,12 @@ export default function Contact(){
             <div className=''>
             <svg xmlns="http://www.w3.org/2000/svg" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
             className='icone-menu' width="35" height="35" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-                <p className='flutua text-warning'>Entre em contato !!</p>
-                <p className='text-white display-1'><strong>Entre em <span className='yellow'>Contato</span></strong></p>
+                <p className='flutua text-warning'>Work with me !!</p>
+                <p className='text-white display-1'><strong>Work <span className='yellow'>here</span></strong></p>
                 <hr className="borda" />
-                <p className='text-white fs-3'>Entrar em contato</p>
-                <form className="row g-1" onSubmit={handleSubmit(POST)} method='post' >
-                    <div className="row">
-                        <div className="col-md-6 text-white anima">
-                            <label htmlFor="name" className="form-label">Nome   </label>
-                            <input type="text" id="name" className="form-control anima"
-                             {...register("name", { required: true })} />
-                             {/* errors will return when field validation fails  */}
-                            {errors.name && <span className='text-warning'>É necessário preencher o campo nome</span>}
-                        </div>
-                    </div>
-                    
-                    <div className="row">
-                        <div className="col-md-6 text-white animas">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" id="email" placeholder='Put your email' className="form-control anima2"
-                            {...register("email", { required: true })} />
-                            {errors.email && <span className='text-warning'>É necessário preencher o campo email</span>}
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-md-6 text-white animas">
-                            <label htmlFor="assunto" className="form-label">Assunto</label>
-                            <input type="text" placeholder='Assunto' className="form-control anima2"
-                            {...register("assunto", { required: true, maxLength: 20 })} />
-                            {errors.assunto && <span className='text-warning'>É necessário preencher o campo assunto</span>}
-                        </div>
-                    </div>
-
-                    <div className="row mt-3">
-                        <div className="col-md-6 text-white animas">
-                            <label htmlFor="texto">Comments</label>
-                            <textarea id="campotexto" maxLength={200} className="form-control anima2" placeholder="Leave a comment here"
-                             {...register("texto", { required: true })} ></textarea>
-                             {errors.texto && <span className='text-warning'>É necessário preencher o campo texto</span>}
-                        </div>
-                    </div>
-                    <div className="row mt-3 animas">
-                        <div className="col-md-6 text-white d-flex justify-content-end">
-                            <input type="submit" className="btn btn-outline-warning anima2" />
-                        </div>
-                    </div>
-                </form>
+                <p className='text-white fs-3'>Section work Here</p>
+                <p className="h1">Soon !!</p>
+                
             </div>
             </div>
         </div>
