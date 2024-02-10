@@ -9,13 +9,15 @@ import Head from '../head'
 import '../estilo.css'
 import Menu from '../components/Menu'
 
+import enviaEmail from '../api/enviaEmail'
+
 //tipos
 
 type Inputs = {
     name: string,
     email: string,
-    campoassunto: string,
-    campotexto: string,
+    assunto: string,
+    texto: string,
   };
 export default function Contact(){
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
@@ -23,28 +25,20 @@ export default function Contact(){
     
     async function POST(data: any,e: any){
         e.preventDefault();
+        const formData = new FormData(e.target)
         try {
   
-            const response = await fetch('/api', {
-                method: 'POST',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: data.name,
-                    email: data.email
-                }),
-            });
+            const response = enviaEmail(
+                data
+              );
+              /*
             if (!response.ok) {
                 console.log("falling over")
                 throw new Error(`response status: ${response.status}`);
             }
             const responseData = await response.json();
             console.log(responseData['message'])
-    
+    */
             alert('Message successfully sent');
         } catch (err:any) {
             console.error(err);
@@ -143,7 +137,7 @@ export default function Contact(){
                             <input type="text" id="name" className="form-control anima"
                              {...register("name", { required: true })} />
                              {/* errors will return when field validation fails  */}
-                            {errors.camponome && <span className='text-warning'>É necessário preencher o campo nome</span>}
+                            {errors.name && <span className='text-warning'>É necessário preencher o campo nome</span>}
                         </div>
                     </div>
                     
@@ -152,25 +146,25 @@ export default function Contact(){
                             <label htmlFor="email" className="form-label">Email</label>
                             <input type="email" id="email" placeholder='Put your email' className="form-control anima2"
                             {...register("email", { required: true })} />
-                            {errors.campoemail && <span className='text-warning'>É necessário preencher o campo email</span>}
+                            {errors.email && <span className='text-warning'>É necessário preencher o campo email</span>}
                         </div>
                     </div>
 
                     <div className="row">
                         <div className="col-md-6 text-white animas">
-                            <label htmlFor="inputZip" className="form-label">Assunto</label>
+                            <label htmlFor="assunto" className="form-label">Assunto</label>
                             <input type="text" placeholder='Assunto' className="form-control anima2"
-                            {...register("campoassunto", { required: true, maxLength: 20 })} />
-                            {errors.campoassunto && <span className='text-warning'>É necessário preencher o campo assunto</span>}
+                            {...register("assunto", { required: true, maxLength: 20 })} />
+                            {errors.assunto && <span className='text-warning'>É necessário preencher o campo assunto</span>}
                         </div>
                     </div>
 
                     <div className="row mt-3">
                         <div className="col-md-6 text-white animas">
-                            <label htmlFor="campotexto">Comments</label>
+                            <label htmlFor="texto">Comments</label>
                             <textarea id="campotexto" className="form-control anima2" placeholder="Leave a comment here"
-                             {...register("campotexto", { required: true })} ></textarea>
-                             {errors.campotexto && <span className='text-warning'>É necessário preencher o campo texto</span>}
+                             {...register("texto", { required: true })} ></textarea>
+                             {errors.texto && <span className='text-warning'>É necessário preencher o campo texto</span>}
                         </div>
                     </div>
                     <div className="row mt-3 animas">

@@ -1,11 +1,15 @@
 "use server"
 import nodemailer from 'nodemailer';
-
+interface Request {
+  name: string;
+  email: string;
+  assunto: string;
+  texto: string;
+}
 export default async function POST(request: Request) {
+ 
   try {
-    const name = request;
-    const email = "seu-email@hotmail.com";
-    const assunto = "assunto";
+    const { name, email, assunto, texto } = request;
 
     // Configurar o transporte do Nodemailer
     const transporter = nodemailer.createTransport({
@@ -18,10 +22,19 @@ export default async function POST(request: Request) {
 
     // Configurar o email a ser enviado
     const mailOptions = {
-      from: 'webdev2024@hotmail.com',
+      from: 'Contato do site<webdev2024@hotmail.com>',
       to: 'webdev2024@hotmail.com',
       subject: 'assunto',
-      text: `Olá ${JSON.stringify(name)} este é um exemplo de e-mail enviado com o Nodemailer!`
+      text: `Olá ${JSON.stringify(name)} este é um exemplo de e-mail enviado com o Nodemailer!
+      ${JSON.stringify(email)}`,
+      html: `
+      Enviado por
+      <p>${JSON.stringify(name)}</p>
+      <p>${JSON.stringify(email)}</p>
+      <br />
+      <p>${assunto}</p>
+      <hr />
+      ${texto}`
     };
 
     // Enviar o email
